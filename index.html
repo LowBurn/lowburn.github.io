@@ -72,31 +72,32 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
+								<form id="contactForm">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
+											<input type="text" name="name" id="name" required />
 										</div>
 										<div class="field half">
 											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
+											<input type="text" name="email" id="email" required />
 										</div>
 										<div class="field">
 											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
+											<textarea name="message" id="message" rows="4" required></textarea>
+										</div>
+										<div class="field">
+											<div class="g-recaptcha" data-sitekey="6LeOYVIsAAAAANz9U8ZxvHYo_pFKpgBurasp0Tu7"></div>
 										</div>
 									</div>
 									<ul class="actions">
 										<li><input type="submit" value="Send Message" class="primary" /></li>
 										<li><input type="reset" value="Reset" /></li>
 									</ul>
+									<p id="formStatus" style="margin: 0.75em 0 0 0;"></p>
 								</form>
 								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.instagram.com/bleedingheartsnyc" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 								</ul>
 							</article>
 
@@ -360,6 +361,46 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<!-- reCAPTCHA v2 -->
+			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+			<script>
+				const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJrdVWXxzVcGQBp-dpjGYYJT79KxJX3ws9SCHPHoJPkT5g87MpyPfxTbAYPnOzzw001g/exec";
 
+				const form = document.getElementById("contactForm");
+				const statusEl = document.getElementById("formStatus");
+
+				form.addEventListener("submit", async (e) => {
+					e.preventDefault();
+					statusEl.textContent = "";
+
+					// reCAPTCHA token is injected into a hidden input named "g-recaptcha-response"
+					const token = document.querySelector('[name="g-recaptcha-response"]')?.value;
+					if (!token) {
+					statusEl.textContent = "Please complete the reCAPTCHA.";
+					return;
+					}
+
+					const fd = new FormData(form);
+
+					try {
+					statusEl.textContent = "Sending…";
+
+					// Important: FormData + no custom headers avoids CORS preflight in many cases
+					const res = await fetch(SCRIPT_URL, {
+						method: "POST",
+						body: fd
+					});
+
+					// If you end up needing mode:"no-cors", you won't be able to read res/json.
+					// With the current setup, we’ll just treat a non-throw as success.
+					statusEl.textContent = "Message sent. Thank you!";
+					form.reset();
+					if (window.grecaptcha) grecaptcha.reset();
+					} catch (err) {
+					console.error(err);
+					statusEl.textContent = "Sorry—something went wrong. Please email us directly.";
+					}
+				});
+			</script>
 	</body>
 </html>
