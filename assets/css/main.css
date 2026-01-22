@@ -1309,6 +1309,8 @@ input, select, textarea {
 			border-color: #ffffff;
 			border-top-width: 1px;
 			border-bottom-width: 1px;
+			border-left-width: 1px;
+			border-right-width: 1px;
 			max-width: 100%;
 		}
 
