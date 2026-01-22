@@ -1311,6 +1311,7 @@ input, select, textarea {
 			border-bottom-width: 1px;
 			border-left-width: 1px;
 			border-right-width: 1px;
+			border-radius: 4px;
 			max-width: 100%;
 		}
 
