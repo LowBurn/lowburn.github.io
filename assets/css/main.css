@@ -1297,6 +1297,7 @@ input, select, textarea {
 			line-height: 5.5rem;
 			border: solid 1px #ffffff;
 			border-radius: 100%;
+			background-color: #FFFFE3D9;
 		}
 
 			#header .logo .icon:before {
@@ -1323,6 +1324,7 @@ input, select, textarea {
 				padding: 3rem 2rem;
 				max-height: 40rem;
 				overflow: hidden;
+				background-color: #FFFFE3D9;
 			}
 
 				#header .content .inner > :last-child {
@@ -1367,10 +1369,12 @@ input, select, textarea {
 					letter-spacing: 0.2rem;
 					font-size: 0.8rem;
 					border-bottom: 0;
+					background-color: #FFFFE3D9;
 				}
 
 					#header nav ul li a:hover {
-						background-color: rgba(255, 255, 255, 0.075);
+						background-color: #660033D9;
+						color: #FFFFE3;
 					}
 
 					#header nav ul li a:active {
