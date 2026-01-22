@@ -72,7 +72,7 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form id="contactForm">
+								<form method="post" action="https://script.google.com/macros/s/AKfycbzwUE1m-jcGGX5As1OaHSmVa6noCIz-HI7n2KfjPS_Y5XKlAhwQyEVdcTIb1l5EA6wzYA/exec">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
@@ -120,44 +120,5 @@
 			<script src="assets/js/main.js"></script>
 			<!-- reCAPTCHA v2 -->
 			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-			<script>
-				const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwAL1093F3mPpFNtWdVOztymhfegxz5JGZhI5dsBJ5UHsSq284NBfRUsSnZHf4odrDisw/exec";
-
-				const form = document.getElementById("contactForm");
-				const statusEl = document.getElementById("formStatus");
-
-				form.addEventListener("submit", async (e) => {
-					e.preventDefault();
-					statusEl.textContent = "";
-
-					// reCAPTCHA token is injected into a hidden input named "g-recaptcha-response"
-					const token = document.querySelector('[name="g-recaptcha-response"]')?.value;
-					if (!token) {
-					statusEl.textContent = "Please complete the reCAPTCHA.";
-					return;
-					}
-
-					const fd = new FormData(form);
-
-					try {
-					statusEl.textContent = "Sending…";
-
-					// Important: FormData + no custom headers avoids CORS preflight in many cases
-					const res = await fetch(SCRIPT_URL, {
-						method: "POST",
-						body: fd
-					});
-
-					// If you end up needing mode:"no-cors", you won't be able to read res/json.
-					// With the current setup, we’ll just treat a non-throw as success.
-					statusEl.textContent = "Message sent. Thank you!";
-					form.reset();
-					if (window.grecaptcha) grecaptcha.reset();
-					} catch (err) {
-					console.error(err);
-					statusEl.textContent = "Sorry—something went wrong. Please email us directly.";
-					}
-				});
-			</script>
 	</body>
 </html>
