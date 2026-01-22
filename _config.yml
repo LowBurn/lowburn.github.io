@@ -1,4 +1,6 @@
----
-title: Bleeding Hearts
-description: Luxury slow-made lingerie boutique
----
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      title: Bleeding Hearts
