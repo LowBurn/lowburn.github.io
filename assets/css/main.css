@@ -1121,6 +1121,7 @@ input, select, textarea {
 		width: auto;
 		height: 100vh;
 		height: 100svh;
+		height: 100dvh;
 		z-index: 1;
 	}
 
@@ -1133,7 +1134,9 @@ input, select, textarea {
 			bottom: 0;
 			right: 0;
 			width: auto;
-			height: auto;
+			height: 100vh;
+			height: 100svh;
+			height: 100dvh;
 		}
 
 		#bg:before {
