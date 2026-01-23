@@ -1116,7 +1116,7 @@ input, select, textarea {
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
+		width: auto;
 		height: 100vh;
 		height: 100svh;
 		z-index: 1;
@@ -1128,8 +1128,8 @@ input, select, textarea {
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 100%;
-			height: 100%;
+			width: auto;
+			height: auto;
 		}
 
 		#bg:before {
@@ -1168,24 +1168,10 @@ input, select, textarea {
 		}
 
 		#bg, #bg:before, #bg:after {
-			top: 0;
 			right: 0;
-			bottom: 0;
 			left: 0;
-			width: auto;
-			height: auto;
 		}
 
-		#bg {
-			height: 100vh;
-			height: 100svh;
-		}
-
-		#bg:after {
-			background-size: cover;
-			background-position: center;
-		}
-		
 		body.is-article-visible #bg:after {
 			-moz-transform: scale(1.0825);
 			-webkit-transform: scale(1.0825);
