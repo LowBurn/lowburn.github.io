@@ -1116,6 +1116,8 @@ input, select, textarea {
 		position: fixed;
 		top: 0;
 		left: 0;
+		bottom: 0;
+		right: 0;
 		width: auto;
 		height: 100vh;
 		height: 100svh;
@@ -1128,6 +1130,8 @@ input, select, textarea {
 			position: absolute;
 			top: 0;
 			left: 0;
+			bottom: 0;
+			right: 0;
 			width: auto;
 			height: auto;
 		}
@@ -1170,6 +1174,8 @@ input, select, textarea {
 		#bg, #bg:before, #bg:after {
 			right: 0;
 			left: 0;
+			top: 0;
+			bottom: 0;
 		}
 
 		body.is-article-visible #bg:after {
