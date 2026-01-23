@@ -1329,6 +1329,10 @@ input, select, textarea {
 				#header .content .inner > :last-child {
 					margin-bottom: 0;
 				}
+			
+			#header .content h2 {
+				color: #FFFFE3;
+			}
 
 			#header .content p {
 				text-transform: uppercase;
